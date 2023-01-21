@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 
 %bcond_without	doc
-%bcond_without	tests
+%bcond_with	tests
 
 Summary:	A program for statistical analysis of sampled data
 Name:		pspp
@@ -107,7 +107,7 @@ Development files for developping applications that require PSPP.
 export CFLAGS="%{optflags} -fgnu89-inline -fcommon `pkg-config --cflags gl pango cairo pangocairo cairo-ps`"
 export LDFLAGS="%{ldflags} `pkg-config --libs gl pango cairo pangocairo cairo-ps`"
 
-autoreconf -fiv
+%config_update
 %configure \
 	--disable-relocatable \
 	--without-libreadline-prefix
