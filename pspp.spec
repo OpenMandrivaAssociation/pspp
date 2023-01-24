@@ -1,7 +1,6 @@
 %define _disable_ld_no_undefined 1
 
 %bcond_without	doc
-%bcond_with	tests
 
 Summary:	A program for statistical analysis of sampled data
 Name:		pspp
