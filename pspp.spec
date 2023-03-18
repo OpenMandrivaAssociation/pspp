@@ -15,7 +15,6 @@ Patch1:		%{name}-1.6.2-clang.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-devel
 #BuildRequires:	gnulib-devel
-#BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl(Config::Perl::V)
 BuildRequires:	perl(ExtUtils::MakeMaker)
@@ -37,6 +36,7 @@ BuildRequires:	pkgconfig(spread-sheet-widget)
 %if %{with doc}
 BuildRequires:	texinfo
 #BuildRequires:	texlive
+BuildRequires:	texlive-ec
 %endif
 
 %description
@@ -70,9 +70,7 @@ user interface has been translated into a number of languages.
 %doc doc/%{name}.xml
 %if %{with doc}
 %doc doc/pspp.html
-%doc doc/%{name}.dvi
 %doc doc/%{name}.pdf
-%doc doc/%{name}.ps
 %endif
 
 #----------------------------------------------------------------------------
@@ -91,10 +89,8 @@ Development files for developping applications that require PSPP.
 %{_libdir}/%{name}/lib%{name}.so
 %{_libdir}/%{name}/lib%{name}-core.so
 %if %{with doc}
-%doc %dir doc/pspp-dev.html
-%doc doc/%{name}-dev.dvi
+%doc doc/pspp-dev.html
 %doc doc/%{name}-dev.pdf
-%doc doc/%{name}-dev.ps
 %endif
 
 #----------------------------------------------------------------------------
