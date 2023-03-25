@@ -33,11 +33,11 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(spread-sheet-widget)
-%if %{with doc}
+#%%if %{with doc}
 BuildRequires:	texinfo
 #BuildRequires:	texlive
 BuildRequires:	texlive-ec
-%endif
+#%%endif
 
 %description
 PSPP is a program for statistical analysis of sampled data.  It is
