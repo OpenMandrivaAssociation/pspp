@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(spread-sheet-widget)
 BuildRequires:	texinfo
 #BuildRequires:	texlive
 BuildRequires:	texlive-ec
+BuildRequires:	imagemagick
 
 %description
 PSPP is a program for statistical analysis of sampled data.  It is
