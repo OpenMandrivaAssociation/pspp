@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 
-%bcond_with	doc
+%bcond_without	doc
 
 Summary:	A program for statistical analysis of sampled data
 Name:		pspp
@@ -33,11 +33,9 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(spread-sheet-widget)
-#%%if %{with doc}
 BuildRequires:	texinfo
 #BuildRequires:	texlive
 BuildRequires:	texlive-ec
-#%%endif
 
 %description
 PSPP is a program for statistical analysis of sampled data.  It is
