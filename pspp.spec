@@ -1,16 +1,16 @@
 %define _disable_ld_no_undefined 1
 
 %bcond_without	doc
+%bcond_with	tests
 
 Summary:	A program for statistical analysis of sampled data
 Name:		pspp
-Version:	1.6.2
+Version:	2.0.1
 Release:	1
 License:	GPLv3+
 Group:		Sciences/Mathematics
 URL:		https://www.gnu.org/software/pspp/
 Source0:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
-Patch1:		%{name}-1.6.2-clang.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-devel
@@ -34,9 +34,12 @@ BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(spread-sheet-widget)
 BuildRequires:	texinfo
-#BuildRequires:	texlive
+BuildRequires:	texlive
 BuildRequires:	texlive-ec
 BuildRequires:	imagemagick
+
+%patchlist
+%{name}-2.0.1-clang.patch
 
 %description
 PSPP is a program for statistical analysis of sampled data.  It is
@@ -98,13 +101,8 @@ Development files for developping applications that require PSPP.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fgnu89-inline -fcommon `pkg-config --cflags gl pango cairo pangocairo cairo-ps`"
-export LDFLAGS="%{ldflags} `pkg-config --libs gl pango cairo pangocairo cairo-ps`"
-
-%config_update
-%configure \
-	--disable-relocatable \
-	--without-libreadline-prefix
+#config_update
+%configure 
 %make_build
 
 %if %{with doc}
@@ -114,20 +112,11 @@ export LDFLAGS="%{ldflags} `pkg-config --libs gl pango cairo pangocairo cairo-ps
 %install
 %make_install
 
-# .desktop
-desktop-file-install \
-	--add-category Education \
-	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/org.gnu.%{name}.desktop
-
-# remove static lib stuff
-find %{buildroot}%{_libdir} -name \*.la -delete
-
 # locales
 %find_lang %{name}
 
 %check
 %if %{with tests}
-%make check || true
+make check || true
 %endif
 
