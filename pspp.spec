@@ -12,6 +12,11 @@ Group:		Sciences/Mathematics
 URL:		https://www.gnu.org/software/pspp/
 Source0:	https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-devel
 #BuildRequires:	gnulib-devel
